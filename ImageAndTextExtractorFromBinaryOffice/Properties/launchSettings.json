@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ImageAndTextExtractorFromBinaryOffice": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\01\\doc\\test1.doc"
+    }
+  }
+}
