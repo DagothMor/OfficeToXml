@@ -2,7 +2,7 @@
   "profiles": {
     "ImageAndTextExtractorFromBinaryOffice": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\01\\doc\\test1.doc"
+      "commandLineArgs": "C:\\01\\xls\\lo2xls.xls"
     }
   }
 }

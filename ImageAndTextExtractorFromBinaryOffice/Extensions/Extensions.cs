@@ -30,4 +30,8 @@ namespace ImageAndTextExtractorFromBinaryOffice.Extensions
     {
 
     }
+    public class XlsExtension : Extension
+    {
+
+    }
 }

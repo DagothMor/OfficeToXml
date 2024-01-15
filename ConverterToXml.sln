@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b2xtranslator", "b2xtransla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "b2xtranslator.doc", "b2xtranslator\Doc\b2xtranslator.doc.csproj", "{2C551CBC-07E1-404E-8E04-38949BC6BE68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageAndTextExtractorFromBinaryOffice", "ImageAndTextExtractorFromBinaryOffice\ImageAndTextExtractorFromBinaryOffice.csproj", "{F43E1F9F-4D77-4036-B1EF-3D0B2D20277A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageAndTextExtractorFromBinaryOffice", "ImageAndTextExtractorFromBinaryOffice\ImageAndTextExtractorFromBinaryOffice.csproj", "{F43E1F9F-4D77-4036-B1EF-3D0B2D20277A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

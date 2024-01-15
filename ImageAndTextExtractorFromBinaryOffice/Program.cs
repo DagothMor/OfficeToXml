@@ -1,4 +1,7 @@
-﻿using ConverterToXml.Converters;
+﻿using b2xtranslator.OpenXmlLib.PresentationML;
+//using b2xtranslator.PresentationMLMapping;
+using b2xtranslator.StructuredStorage.Reader;
+using ConverterToXml.Converters;
 //using ConverterToXml.Test;
 using ImageAndTextExtractorFromBinaryOffice.Extensions;
 using System;
@@ -39,7 +42,7 @@ namespace ImageAndTextExtractorFromBinaryOffice
                 DirectoryInfo di = Directory.CreateDirectory(workingPath);
                 di.Create();
             }
-            else 
+            else
             {
                 DirectoryInfo di = Directory.CreateDirectory(workingPath);
                 di.Delete(true);
@@ -60,19 +63,21 @@ namespace ImageAndTextExtractorFromBinaryOffice
                     break;
                 case PptExtension _:
                     Console.WriteLine("Extracting from ppt file...");
-                    ExtractFromDOCX(filePath);
+                    //PPT2PPTX.ExtractFromPPT(filePath);
                     break;
-                case OdtExtension _:
-                    // handle OdtExtension
+                case XlsExtension _:
+                    Console.WriteLine("Extracting from xls file...");
+                    ExtractFromXLS(filePath);
                     break;
                 default:
                     // handle other cases
                     break;
             }
         }
-        public static bool ExtractFromPPT(string path)
+
+        public static bool ExtractFromDOCX(string path)
         {
-            var converter = new ConverterToXml.Converters.DocToDocx();
+            ConverterToXml.Converters.DocToDocx converter = new ConverterToXml.Converters.DocToDocx();
             //string curDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             //string path = @"C:\01\test.doc"; // curDir +
             string curDir = Path.GetDirectoryName(path);
@@ -139,15 +144,16 @@ namespace ImageAndTextExtractorFromBinaryOffice
             return true;
             //Assert.True(File.Exists(curDir + @" / Files/Result.docx"));
         }
-        public static bool ExtractFromDOCX(string path)
+        public static bool ExtractFromXLS(string path)
         {
-            ConverterToXml.Converters.DocToDocx converter = new ConverterToXml.Converters.DocToDocx();
+            //XlsToXlsx converter = new XlsToXlsx();
+            ConverterToXml.Converters.XlsToXlsx converter = new ConverterToXml.Converters.XlsToXlsx();
             //string curDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             //string path = @"C:\01\test.doc"; // curDir +
             string curDir = Path.GetDirectoryName(path);
-            converter.ConvertFromFileToDocxFile(path, curDir + @"\Files\Result.docx");
+            converter.ConvertToXlsxFile(path, curDir + @"\Files\Result.xlsx");
 
-            if (!File.Exists(curDir + @"/Files/Result.docx"))
+            if (!File.Exists(curDir + @"/Files/Result.xlsx"))
             {
                 return false;
             }
@@ -155,13 +161,13 @@ namespace ImageAndTextExtractorFromBinaryOffice
             ExtractResult result = new ExtractResult();
             System.Drawing.Image image;
             System.IO.Compression.ZipArchive documentArchive;
-            string mediaPath = "word/media/";
+            string mediaPath = "xl/media/";
 
             //string libPath = "libre/something/.../pictures/";
             // Open the document archive and loop through entries
             try
             {
-                using (documentArchive = new System.IO.Compression.ZipArchive(new FileStream(curDir + @"/Files/Result.docx", FileMode.Open)))
+                using (documentArchive = new System.IO.Compression.ZipArchive(new FileStream(curDir + @"/Files/Result.xlsx", FileMode.Open)))
                 {
                     foreach (System.IO.Compression.ZipArchiveEntry entry in documentArchive.Entries)
                     {

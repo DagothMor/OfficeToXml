@@ -51,9 +51,9 @@ namespace ImageAndTextExtractorFromBinaryOffice
                         supportedExtension = new OdtExtension();
                         return true;
                     }
-                case ".xsl":
+                case ".xls":
                     {
-                        supportedExtension = new OtherExtension();
+                        supportedExtension = new XlsExtension();
                         return true;
                     }
                 case ".ppt":
